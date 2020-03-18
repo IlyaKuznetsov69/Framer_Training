@@ -1,5 +1,5 @@
 import React, { memo, useCallback } from "react";
-import { Frame, AnimatePresence } from "framer";
+import { motion, AnimatePresence } from "framer-motion";
 
 import Styled from "./Tab.styled";
 
@@ -23,31 +23,26 @@ const Tab = ({ title, content, index, isOpen, onClick }) => {
 
   return (
     <>
-      <Frame
+      <motion.div
         initial={false}
         animate={{ background: isOpen === index ? "skyBlue" : "darkGray" }}
         transition={{ duration: 0.3 }}
         onClick={handleClick}
-        whileHover={{ scale: 0.97 }}
-        width="100%"
-        height="auto"
-        position="relative"
+        whileHover={{ scale: 1.02 }}
       >
         <Styled.Title>{title}</Styled.Title>
-      </Frame>
+      </motion.div>
       <AnimatePresence initial={false}>
         {isOpen === index && (
-          <Frame
+          <motion.div
             key={index}
             initial="closed"
             animate="open"
             exit="closed"
             variants={variants}
-            width="100%"
-            position="relative"
           >
             <Styled.Content>{content}</Styled.Content>
-          </Frame>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

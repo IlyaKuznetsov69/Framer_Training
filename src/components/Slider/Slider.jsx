@@ -1,5 +1,5 @@
 import React, { memo, useState, useCallback, useEffect } from "react";
-import { Frame, AnimatePresence } from "framer";
+import { AnimatePresence } from "framer-motion";
 
 import slides from "./slides";
 
@@ -7,7 +7,7 @@ import Styled from "./Slider.styled";
 
 const variants = {
   enter: {
-    x: "100%",
+    x: 300,
     opacity: 0
   },
   center: {
@@ -17,7 +17,7 @@ const variants = {
   },
   exit: {
     zIndex: 0,
-    x: "-100%",
+    x: -300,
     opacity: 0
   }
 };
@@ -41,7 +41,7 @@ const Slider = () => {
     <Styled.Root>
       <Styled.Bordering>
         <AnimatePresence initial={false}>
-          <Frame
+          <Styled.Image
             key={slide}
             variants={variants}
             initial="enter"
@@ -51,11 +51,8 @@ const Slider = () => {
               x: { type: "spring", stiffness: 50, damping: 300 },
               opacity: { duration: 0.5 }
             }}
-            width="100%"
-            height="100%"
-          >
-            <Styled.Image src={slides[slide]} />
-          </Frame>
+            src={slides[slide]}
+          />
         </AnimatePresence>
       </Styled.Bordering>
     </Styled.Root>

@@ -1,7 +1,10 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 const Root = styled.div`
-  width: 100vw;
+  position: relative;
+  left: 300px;
+  width: calc(100vw - 300px);
   height: 100vh;
   background: gray;
   padding-top: 100px;
@@ -18,8 +21,11 @@ const Bordering = styled.div`
   overflow: hidden;
 `;
 
-const Image = styled.img`
-  object-fit: cover;
+const Image = styled(motion.img)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
 `;
 
 export default {
