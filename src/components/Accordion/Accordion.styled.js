@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 const Root = styled.div`
   position: fixed;
@@ -9,6 +10,13 @@ const Root = styled.div`
   z-index: 1;
 `;
 
+const Content = styled(motion.div)`
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+`;
+
 export default {
-  Root
+  Root,
+  Content
 };
